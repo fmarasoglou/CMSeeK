@@ -1,9 +1,7 @@
 FROM python:3-alpine
 
 LABEL name CMSeeK
-LABEL src "https://github.com/Tuhinshubhra/CMSeeK"
-LABEL creato Tuhinshubhra
-LABEL dockerfile_maintenance khast3x
+LABEL src "https://github.com/cloudwork-sh/hakrawler"
 LABEL desc "CMS Detection and Exploitation suite - Scan WordPress, Joomla, Drupal and 130 other CMSs."
 
 
