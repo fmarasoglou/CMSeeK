@@ -1,0 +1,8 @@
+services:
+  cmseek:
+    build: .
+    image: cmseek:local
+    volumes:
+      - .:/cmseek
+    stdin_open: true
+    tty: true

@@ -1,14 +1,17 @@
 FROM python:3-alpine
 
 LABEL name CMSeeK
-LABEL src "https://github.com/Tuhinshubhra/CMSeeK"
-LABEL creato Tuhinshubhra
-LABEL dockerfile_maintenance khast3x
+LABEL src "https://github.com/cloudwork-sh/hakrawler"
 LABEL desc "CMS Detection and Exploitation suite - Scan WordPress, Joomla, Drupal and 130 other CMSs."
 
 
-RUN apk add --no-cache git py3-pip && git clone https://github.com/Tuhinshubhra/CMSeeK
+RUN apk add --no-cache git
 
-WORKDIR CMSeeK
-RUN pip install -r requirements.txt
+WORKDIR /cmseek
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
 ENTRYPOINT [ "python", "cmseek.py" ]
