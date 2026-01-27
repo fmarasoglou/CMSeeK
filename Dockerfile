@@ -7,8 +7,13 @@ LABEL dockerfile_maintenance khast3x
 LABEL desc "CMS Detection and Exploitation suite - Scan WordPress, Joomla, Drupal and 130 other CMSs."
 
 
-RUN apk add --no-cache git py3-pip && git clone https://github.com/Tuhinshubhra/CMSeeK
+RUN apk add --no-cache git
 
-WORKDIR CMSeeK
-RUN pip install -r requirements.txt
+WORKDIR /cmseek
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
 ENTRYPOINT [ "python", "cmseek.py" ]
