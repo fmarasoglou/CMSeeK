@@ -7,7 +7,7 @@
 verbose = False
 
 # GitHub repo link
-GIT_URL = 'https://github.com/Tuhinshubhra/CMSeeK'
+GIT_URL = 'https://github.com/fmarasoglou/CMSeeK'
 
 # Version thingy
 try:

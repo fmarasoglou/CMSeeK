@@ -384,7 +384,7 @@ def update():
     global cmseek_version
     my_version = int(cmseek_version.replace('.',''))
     info("Checking for updates")
-    get_version = getsource('https://raw.githubusercontent.com/Tuhinshubhra/CMSeeK/master/current_version',randomua('generate'))
+    get_version = getsource('https://raw.githubusercontent.com/fmarasoglou/CMSeeK/master/current_version',randomua('generate'))
     if get_version[0] != '1':
         error('Could not get latest version, Error: ' + get_version[1])
         bye()
