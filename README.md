@@ -108,13 +108,41 @@ HELP & MISCELLANEOUS:
       --batch                      Never ask you to press enter after every site in a list is scanned
 
 EXAMPLE USAGE:
-      python3 cmseek.py -u example.com                           # Scan example.com
-      python3 cmseek.py -l /home/user/target.txt                 # Scan the sites specified in target.txt (comma separated)
-      python3 cmseek.py -u example.com --user-agent Mozilla 5.0  # Scan example.com using custom user-Agent Mozilla is 5.0 used here
-      python3 cmseek.py -u example.com --random-agent            # Scan example.com using a random user-Agent
-      python3 cmseek.py -v -u example.com                        # enabling verbose output while scanning example.com
+       python3 cmseek.py -u example.com                           # Scan example.com
+       python3 cmseek.py -l /home/user/target.txt                 # Scan the sites specified in target.txt (comma separated)
+       python3 cmseek.py -u example.com --user-agent Mozilla 5.0  # Scan example.com using custom user-Agent Mozilla is 5.0 used here
+       python3 cmseek.py -u example.com --random-agent            # Scan example.com using a random user-Agent
+       python3 cmseek.py -v -u example.com                        # enabling verbose output while scanning example.com
 
 ```
+
+## Docker Usage:
+
+CMSeeK provides a `Dockerfile` (`python:3.14-slim`, non-root `cmseek` user, OCI labels) and `docker-compose.yml` for containerized scans.
+
+**Build:**
+```bash
+docker build -t cmseek:local .
+```
+
+**Run (tested flags):**
+```bash
+# Help menu
+docker run --rm cmseek:local --help
+
+# Single-site scan with live output (flags used in verification against bodyculture.gr):
+docker run --rm cmseek:local -u https://bodyculture.gr -v --batch
+
+# Equivalent native:
+# -u / --url         Target Url
+# -v / --verbose     Increase output verbosity
+# --batch            Never prompt for [ENTER] (required for non-interactive Docker)
+```
+
+Notes:
+- `--batch` is required inside Docker to avoid interactive `input()` prompts when scanning lists.
+- With `docker-compose.yml` the repo is mounted at `.:/cmseek` (`stdin_open: true`, `tty: true`), so run `docker compose run --rm cmseek -u https://bodyculture.gr -v --batch` for compose workflow. Results are written to `Result/<target>/cms.json` inside the container (mounted volume persists on host when using compose).
+- Image runs as `USER cmseek` (non-root) and uses explicit `COPY` layers for cache efficiency; see `Dockerfile:1-25` and `.dockerignore`.
 
 ## Checking For Update:
 
