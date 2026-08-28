@@ -14,15 +14,15 @@ from setuptools import find_packages, setup, Command
 # Package meta-data.
 NAME = 'cmseek'
 DESCRIPTION = 'CMS Detection and Exploitation suite - Scan WordPress, Joomla, Drupal and over 180 other CMSs.'
-URL = 'https://github.com/Tuhinshubhra/CMSeeK'
+URL = 'https://github.com/fmarasoglou/CMSeeK'
 EMAIL = 'contactr3d@protonmail.com'
 AUTHOR = 'Tuhin Shubhra'
-REQUIRES_PYTHON = '>=3.6.0'
+REQUIRES_PYTHON = '>=3.9'
 VERSION = '1.1.3'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-     'requests'
+     'requests==2.32.3'
 ]
 
 # What packages are optional?
@@ -120,7 +120,12 @@ setup(
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
