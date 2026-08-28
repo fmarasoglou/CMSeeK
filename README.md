@@ -131,7 +131,7 @@ docker build -t cmseek:local .
 docker run --rm cmseek:local --help
 
 # Single-site scan with live output (flags used in verification against bodyculture.gr):
-docker run --rm cmseek:local -u https://bodyculture.gr -v --batch
+docker run --rm cmseek:local -u https://example.com -v --batch
 
 # Equivalent native:
 # -u / --url         Target Url
@@ -141,7 +141,7 @@ docker run --rm cmseek:local -u https://bodyculture.gr -v --batch
 
 Notes:
 - `--batch` is required inside Docker to avoid interactive `input()` prompts when scanning lists.
-- With `docker-compose.yml` the repo is mounted at `.:/cmseek` (`stdin_open: true`, `tty: true`), so run `docker compose run --rm cmseek -u https://bodyculture.gr -v --batch` for compose workflow. Results are written to `Result/<target>/cms.json` inside the container (mounted volume persists on host when using compose).
+- With `docker-compose.yml` the repo is mounted at `.:/cmseek` (`stdin_open: true`, `tty: true`), so run `docker compose run --rm cmseek -u https://example.com -v --batch` for compose workflow. Results are written to `Result/<target>/cms.json` inside the container (mounted volume persists on host when using compose).
 - Image runs as `USER cmseek` (non-root) and uses explicit `COPY` layers for cache efficiency; see `Dockerfile:1-25` and `.dockerignore`.
 
 ## Checking For Update:
